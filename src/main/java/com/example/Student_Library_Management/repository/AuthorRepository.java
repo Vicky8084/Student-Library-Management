@@ -1,4 +1,7 @@
 package com.example.Student_Library_Management.repository;
 
-public interface AuthorRepository {
+import com.example.Student_Library_Management.model.Author;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AuthorRepository extends JpaRepository<Author,Integer> {
 }
