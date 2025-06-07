@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.util.List;
+
 @Entity
 @Table(name="card")
 public class Card {
@@ -20,6 +22,16 @@ public class Card {
     @Column(name = "update_date",nullable = false)
     @UpdateTimestamp
     private  String updateDate;
+
+    @JoinColumn
+    @OneToOne
+    private Student student;
+
+    @OneToMany(mappedBy = "card")
+    private List<Book> bookList;
+
+    @OneToMany(mappedBy = "card")
+    private List<Transaction> transactionList;
 
     public int getId() {
         return id;
@@ -51,5 +63,29 @@ public class Card {
 
     public void setUpdateDate(String updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public List<Book> getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(List<Book> bookList) {
+        this.bookList = bookList;
+    }
+
+    public List<Transaction> getTransactionList() {
+        return transactionList;
+    }
+
+    public void setTransactionList(List<Transaction> transactionList) {
+        this.transactionList = transactionList;
     }
 }

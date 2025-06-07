@@ -2,6 +2,8 @@ package com.example.Student_Library_Management.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "author")
 public class Author {
@@ -27,6 +29,8 @@ public class Author {
     @Column(name = "rating",nullable = false)
     private float rating;
 
+    @OneToMany(mappedBy = "author")
+    private List<Book> bookList;
 
     public int getId() {
         return id;
@@ -82,5 +86,13 @@ public class Author {
 
     public void setRating(float rating) {
         this.rating = rating;
+    }
+
+    public List<Book> getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(List<Book> bookList) {
+        this.bookList = bookList;
     }
 }

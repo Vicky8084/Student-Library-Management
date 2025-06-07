@@ -30,6 +30,10 @@ public class Student {
     @Column(name = "address",nullable = false)
     private String address;
 
+
+    @OneToOne(mappedBy = "student")
+    private Card card;
+
     public int getId() {
         return id;
     }
@@ -92,5 +96,13 @@ public class Student {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
     }
 }

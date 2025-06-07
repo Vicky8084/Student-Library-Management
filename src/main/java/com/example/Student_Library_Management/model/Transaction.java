@@ -22,6 +22,15 @@ public class Transaction {
     @Enumerated(EnumType.STRING)
     private TransactionType transactionType;
 
+    @JoinColumn
+    @ManyToOne
+    private Book book;
+
+    @JoinColumn
+    @ManyToOne
+    private Card card;
+
+
     public int getId() {
         return id;
     }
@@ -60,5 +69,21 @@ public class Transaction {
 
     public void setTransactionType(TransactionType transactionType) {
         this.transactionType = transactionType;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
     }
 }

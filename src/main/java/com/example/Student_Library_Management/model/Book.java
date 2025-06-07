@@ -3,6 +3,8 @@ package com.example.Student_Library_Management.model;
 import com.example.Student_Library_Management.enums.Category;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "book")
 public class Book {
@@ -34,6 +36,18 @@ public class Book {
 
     @Column(name="rack_number",nullable = false)
     private String rackNumber;
+
+    @JoinColumn
+    @ManyToOne
+    private Card card;
+
+    @OneToMany(mappedBy = "book")
+    private List<Transaction> transactionList;
+
+    @JoinColumn
+    @ManyToOne
+    private Author author;
+
 
     public int getId() {
         return id;
@@ -105,5 +119,29 @@ public class Book {
 
     public void setRackNumber(String rackNumber) {
         this.rackNumber = rackNumber;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
+
+    public List<Transaction> getTransactionList() {
+        return transactionList;
+    }
+
+    public void setTransactionList(List<Transaction> transactionList) {
+        this.transactionList = transactionList;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 }
