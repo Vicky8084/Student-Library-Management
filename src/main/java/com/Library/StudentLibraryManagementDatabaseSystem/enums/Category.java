@@ -7,5 +7,7 @@ public enum Category {
     FICTION,
     BIOGRAPHY,
     HISTORICAL,
-    MYTHOLOGIST
+    MYTHOLOGIST,
+    THRILLER,
+    HORROR
 }
